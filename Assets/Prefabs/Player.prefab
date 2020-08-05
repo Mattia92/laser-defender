@@ -99,9 +99,13 @@ MonoBehaviour:
   moveSpeed: 10
   padding: 1
   health: 200
+  deathSFX: {fileID: 8300000, guid: c0f29ba2eafee4e2b9522481e6b22b4d, type: 3}
+  deathSFXVolume: 1
   projectile: {fileID: 7562591580445791418, guid: 5d16e3ec082784306836216568fe2b7e, type: 3}
   projectileSpeed: 20
   projectileFiringPeriod: 0.1
+  projectileSFX: {fileID: 8300000, guid: 5026ce8b3ee9c4b3eae5baca127cbce6, type: 3}
+  projectileSFXVolume: 0.1
 --- !u!60 &-970353368224254049
 PolygonCollider2D:
   m_ObjectHideFlags: 0

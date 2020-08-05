@@ -9,11 +9,15 @@ public class Player : MonoBehaviour {
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float padding = 1f;
     [SerializeField] int health = 200;
+    [SerializeField] AudioClip deathSFX;
+    [SerializeField] [Range(0, 1)] float deathSFXVolume = 0.75f;
 
     [Header("Projectile")]
     [SerializeField] GameObject projectile;
     [SerializeField] float projectileSpeed = 20f;
     [SerializeField] float projectileFiringPeriod = 0.1f;
+    [SerializeField] AudioClip projectileSFX;
+    [SerializeField] [Range(0, 1)] float projectileSFXVolume = 0.25f;
 
     Coroutine firingCoroutine;
 
@@ -43,6 +47,7 @@ public class Player : MonoBehaviour {
         while (true) {
             GameObject laserGameObject = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
             laserGameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+            AudioSource.PlayClipAtPoint(projectileSFX, Camera.main.transform.position, projectileSFXVolume);
             yield return new WaitForSeconds(projectileFiringPeriod);
         }
     }
@@ -67,8 +72,14 @@ public class Player : MonoBehaviour {
         health -= damageDealer.Damage;
         damageDealer.Hit();
         if (health <= 0) {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    private void Die() {
+        FindObjectOfType<Level>().LoadGameOver();
+        Destroy(gameObject);
+        AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
     }
 
     private void SetUpMoveBoundaries() {
