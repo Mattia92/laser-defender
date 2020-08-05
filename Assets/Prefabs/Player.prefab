@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8422462387042186674}
   - component: {fileID: 8422462387042186675}
   - component: {fileID: 8422462387042186677}
-  m_Layer: 0
+  - component: {fileID: -970353368224254049}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,4 +98,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   padding: 1
-  laser: {fileID: 7562591580445791418, guid: 5d16e3ec082784306836216568fe2b7e, type: 3}
+  health: 200
+  projectile: {fileID: 7562591580445791418, guid: 5d16e3ec082784306836216568fe2b7e, type: 3}
+  projectileSpeed: 20
+  projectileFiringPeriod: 0.1
+--- !u!60 &-970353368224254049
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8422462387042186672}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.99, y: 0.75}
+    newSize: {x: 0.99, y: 0.75}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.49499986, y: 0.06906605}
+      - {x: 0.43544853, y: 0.068155766}
+      - {x: 0.41229302, y: -0.001782909}
+      - {x: 0.35904282, y: -0.019516468}
+      - {x: 0.11964244, y: 0.12390375}
+      - {x: 0.109745175, y: 0.24008451}
+      - {x: 0.08923569, y: 0.37500048}
+      - {x: 0.027269125, y: 0.375}
+      - {x: -0.07957537, y: 0.375}
+      - {x: -0.11957537, y: 0.125}
+      - {x: -0.35144377, y: -0.03161341}
+      - {x: -0.41469765, y: 0.003835678}
+      - {x: -0.44415078, y: 0.06449053}
+      - {x: -0.49502987, y: 0.04687977}
+      - {x: -0.47466335, y: -0.18918991}
+      - {x: -0.46449038, y: -0.250085}
+      - {x: -0.41926402, y: -0.24712563}
+      - {x: -0.41483012, y: -0.1934711}
+      - {x: -0.145, y: -0.26449004}
+      - {x: -0.07466027, y: -0.380085}
+      - {x: 0.07957543, y: -0.369915}
+      - {x: 0.13804677, y: -0.285}
+      - {x: 0.39847964, y: -0.21914673}
+      - {x: 0.4651699, y: -0.25483}
+      - {x: 0.46449044, y: -0.23466003}

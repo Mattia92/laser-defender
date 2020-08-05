@@ -16,5 +16,5 @@ MonoBehaviour:
   path: {fileID: 5615395009233174981, guid: ea3a72f7bb3804b60a079f900187255f, type: 3}
   timeBetweenSpawns: 0.5
   spawnRandomFactor: 0.3
-  moveSpeed: 2
+  moveSpeed: 5
   numberOfEnemies: 5

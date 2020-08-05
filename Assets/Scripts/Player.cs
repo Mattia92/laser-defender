@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+    [Header("Player")]
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float padding = 1f;
-    [SerializeField] GameObject laser;
-    [SerializeField] float laserSpeed = 20f;
-    [SerializeField] float laserFiringPeriod = 0.1f;
+    [SerializeField] int health = 200;
+
+    [Header("Projectile")]
+    [SerializeField] GameObject projectile;
+    [SerializeField] float projectileSpeed = 20f;
+    [SerializeField] float projectileFiringPeriod = 0.1f;
 
     Coroutine firingCoroutine;
 
@@ -37,9 +41,9 @@ public class Player : MonoBehaviour {
 
     IEnumerator FireContinuously() {
         while (true) {
-            GameObject laserGameObject = Instantiate(laser, transform.position, Quaternion.identity) as GameObject;
-            laserGameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, laserSpeed);
-            yield return new WaitForSeconds(laserFiringPeriod);
+            GameObject laserGameObject = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
+            laserGameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
+            yield return new WaitForSeconds(projectileFiringPeriod);
         }
     }
 
@@ -51,6 +55,20 @@ public class Player : MonoBehaviour {
         var newYPos = Mathf.Clamp(transform.position.y + deltaY, yMin, yMax);
 
         transform.position = new Vector2(newXPos, newYPos);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        DamageDealer damageDealer = collision.gameObject.GetComponent<DamageDealer>();
+        if (!damageDealer) { return; }
+        ProcessHit(damageDealer);
+    }
+
+    private void ProcessHit(DamageDealer damageDealer) {
+        health -= damageDealer.Damage;
+        damageDealer.Hit();
+        if (health <= 0) {
+            Destroy(gameObject);
+        }
     }
 
     private void SetUpMoveBoundaries() {

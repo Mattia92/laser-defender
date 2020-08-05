@@ -13,6 +13,7 @@ public class WaveConfig : ScriptableObject {
     [SerializeField] int numberOfEnemies = 5;
 
     public GameObject Enemy { get => enemy; }
+    public GameObject Path { get => path; }
     public float TimeBetweenSpawns { get => timeBetweenSpawns; }
     public float SpawnRandomFactor { get => spawnRandomFactor; }
     public float MoveSpeed { get => moveSpeed; }
