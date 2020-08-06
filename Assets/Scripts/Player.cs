@@ -5,23 +5,27 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    [Header("Player")]
+    [Header("Player Stats")]
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] float padding = 1f;
     [SerializeField] int health = 200;
-    [SerializeField] AudioClip deathSFX;
-    [SerializeField] [Range(0, 1)] float deathSFXVolume = 0.75f;
 
     [Header("Projectile")]
     [SerializeField] GameObject projectile;
     [SerializeField] float projectileSpeed = 20f;
     [SerializeField] float projectileFiringPeriod = 0.1f;
+
+    [Header("Sound Effects")]
+    [SerializeField] AudioClip deathSFX;
+    [SerializeField] [Range(0, 1)] float deathSFXVolume = 0.75f;
     [SerializeField] AudioClip projectileSFX;
     [SerializeField] [Range(0, 1)] float projectileSFXVolume = 0.25f;
 
     Coroutine firingCoroutine;
 
     float xMin, xMax, yMin, yMax;
+
+    public int Health { get => health; }
 
     // Start is called before the first frame update
     void Start() {
